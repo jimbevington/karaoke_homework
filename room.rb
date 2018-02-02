@@ -1,6 +1,6 @@
 class Room
 
-  attr_reader :name, :capacity, :price, :guests, :songs
+  attr_reader :name, :capacity, :price, :guests, :songs, :total_spend
 
   def initialize(name, capacity, price)
     @name = name
@@ -9,11 +9,18 @@ class Room
     # both GUESTS and SONGS are added by the Karaoke bar
     @guests = []
     @songs = []
+    @total_spend = 0
   end
 
   def add_guest(guest)
     @guests.push(guest)
-    guest.check_songs(@songs)
+    increase_total_spend() # add to the total
+    guest.check_songs(@songs) # check the song
+  end
+
+  def increase_total_spend
+    # increase the total spend by the price the guest just spent
+    @total_spend += price
   end
 
   def remove_guest(guest)

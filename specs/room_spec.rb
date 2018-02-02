@@ -60,8 +60,18 @@ class TestRoom < MiniTest::Test
   def test_guest_check_song_when_added
     @karaoke_bar.add_songs(@room, @song)
     assert_equal("Whoo! They have my song!", @room.add_guest(@guest))
+  end
 
+  def test_increase_total_spend
+    @room.increase_total_spend()
+    result = @room.total_spend == @room.price
+    assert_equal(true, result)
+  end
 
+  def test_increase_spend_after_adding_guest
+    @room.add_guest(@guest)
+    result = @room.total_spend == @room.price
+    assert_equal(true, result)
   end
 
 end
