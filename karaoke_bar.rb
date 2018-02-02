@@ -13,11 +13,21 @@ class KaraokeBar
     @guests = []
   end
 
-  def check_in(guest, room)
-    if room.guests.count < room.capacity
-      room.add_guest(guest)
+  def check_guest_money(guest, room)
+    unless guest.money >= room.price
+      return p "Excuuuuuuse me! This costs £#{room.price}, you have £#{guest.money}."
     else
-      p "Room Full. GET OUT!!!"
+      return true
+    end
+  end
+
+  def check_in(guest, room)
+    if check_guest_money(guest, room)
+      if room.guests.count < room.capacity
+        room.add_guest(guest)
+      else
+        p "Room Full. GET OUT!!!"
+      end
     end
   end
   #
