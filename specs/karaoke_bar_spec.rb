@@ -35,4 +35,9 @@ class TestKaraokeBar < MiniTest::Test
     assert_equal(1, @karaoke_bar.songs.count)
   end
 
+  def test_can_create_room
+    @karaoke_bar.create_room("Dirty Bronze")
+    assert_equal(1, @karaoke_bar.rooms.count)
+  end
+
 end

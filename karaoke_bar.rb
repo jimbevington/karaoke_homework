@@ -15,4 +15,8 @@ class KaraokeBar
     @songs.push(Song.new(name, artist))
   end
 
+  def create_room(name)
+    @rooms.push(Room.new(name))
+  end
+
 end
