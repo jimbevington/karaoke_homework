@@ -2,9 +2,9 @@ require('minitest/autorun')
 require('minitest/rg')
 
 require_relative('../karaoke_bar.rb')
-require_relative('../song.rb')
-require_relative('../guest.rb')
-require_relative('../room.rb')
+# require_relative('../song.rb')
+# require_relative('../guest.rb')
+# require_relative('../room.rb')
 
 
 class TestKaraokeBar < MiniTest::Test
