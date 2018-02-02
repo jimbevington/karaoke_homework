@@ -1,9 +1,10 @@
 class Room
 
-  attr_reader :name, :guests, :songs
+  attr_reader :name, :capacity, :guests, :songs
 
-  def initialize(name)
+  def initialize(name, capacity)
     @name = name
+    @capacity = capacity
     # both GUESTS and SONGS are added by the Karaoke bar
     @guests = []
     @songs = []
