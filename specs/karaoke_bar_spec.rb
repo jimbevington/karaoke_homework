@@ -48,9 +48,14 @@ class TestKaraokeBar < MiniTest::Test
     assert_equal(1, @room1.guests.count)
   end
 
-  def test_add_playlist_to_room
-    @karaoke_bar.add_playlist(@room1, @playlist1)
+  def test_add_songs_to_room__multiple_songs
+    @karaoke_bar.add_songs(@room1, @playlist1)
     assert_equal(3, @room1.songs.count)
+  end
+
+  def test_add_songs_to_room__single_songs
+    @karaoke_bar.add_songs(@room1, @song1)
+    assert_equal(1, @room1.songs.count)
   end
 
 end
