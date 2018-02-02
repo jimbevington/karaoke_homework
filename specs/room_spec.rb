@@ -22,8 +22,14 @@ class TestRoom < MiniTest::Test
   end
 
   def test_can_add_guests
-    @room.add_guest"the baby Jesus"
+    @room.add_guest("the baby Jesus")
     assert_equal(1, @room.guests.count)
+  end
+
+  def test_can_remove_guests
+    @room.add_guest("the baby Jesus")
+    @room.remove_guest("the baby Jesus")
+    assert_equal(0, @room.guests.count)
   end
 
 end
