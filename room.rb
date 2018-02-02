@@ -13,6 +13,7 @@ class Room
 
   def add_guest(guest)
     @guests.push(guest)
+    # guest.check_song(@songs)
   end
 
   def remove_guest(guest)
