@@ -22,4 +22,11 @@ class KaraokeBar
     room.remove_guest(guest)
   end
 
+  def add_playlist(room, song_array)
+    # this loop approach allows songs to be added to an existing playlist, as one might do with new releases
+    for song in song_array
+      room.add_song(song)
+    end
+  end
+
 end

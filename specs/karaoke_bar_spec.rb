@@ -12,10 +12,12 @@ class TestKaraokeBar < MiniTest::Test
     @guest2 = Guest.new("Ant McPartlin")
     @song1 = Song.new("The Visitors", "Abba")
     @song2 = Song.new("Get Ur Freak On", "Missy Elliott")
+    @song3 = Song.new("It's Gonna Rain", "Steve Reich")
+    @playlist1 = [@song1, @song2, @song3]
+    @playlist2 = [@song2, @song3]
     @room1 = Room.new("Purgatory")
-    @room2 = Room.new("Elysium")
-    @room3 = Room.new("IKEA")
-    @karaoke_bar = KaraokeBar.new("Posers", [@song1, @song2], [@room1, @room2, @room3])
+    @room2 = Room.new("IKEA")
+    @karaoke_bar = KaraokeBar.new("Posers", [@song1, @song2, @song3], [@room1, @room2, @room3])
   end
 
   def test_bar_has_name
@@ -23,7 +25,7 @@ class TestKaraokeBar < MiniTest::Test
   end
 
   def test_bar_has_songs
-    assert_equal(2, @karaoke_bar.songs.count)
+    assert_equal(3, @karaoke_bar.songs.count)
   end
 
   def test_bar_has_rooms
@@ -46,5 +48,9 @@ class TestKaraokeBar < MiniTest::Test
     assert_equal(1, @room1.guests.count)
   end
 
+  def test_add_playlist_to_room
+    @karaoke_bar.add_playlist(@room1, @playlist1)
+    assert_equal(3, @room1.songs.count)
+  end
 
 end
