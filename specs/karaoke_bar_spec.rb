@@ -35,7 +35,14 @@ class TestKaraokeBar < MiniTest::Test
   end
 
   def test_check_in_guest
-    @karaoke_bar.check_in(@guest1, @room1 )
+    @karaoke_bar.check_in(@guest1, @room1)
+    assert_equal(1, @room1.guests.count)
+  end
+
+  def test_check_out_guest
+    @karaoke_bar.check_in(@guest1, @room1)
+    @karaoke_bar.check_in(@guest2, @room1)
+    @karaoke_bar.check_out(@guest1, @room1)
     assert_equal(1, @room1.guests.count)
   end
 

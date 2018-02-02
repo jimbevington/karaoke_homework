@@ -22,5 +22,4 @@ class KaraokeBar
     room.remove_guest(guest)
   end
 
-
 end
