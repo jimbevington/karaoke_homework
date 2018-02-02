@@ -6,25 +6,21 @@ class KaraokeBar
 
   attr_reader :name, :guests, :songs, :rooms
 
-  def initialize(name)
+  def initialize(name, songs, rooms)
     @name = name
-    # starts with no songs, rooms or guests.
-    # the bar CREATES them
+    @songs = songs
+    @rooms = rooms
     @guests = []
-    @songs = []
-    @rooms = []
   end
 
-  def create_song(name, artist)
-    @songs.push(Song.new(name, artist))
+  def check_in(guest, room)
+    room.add_guest(guest)
   end
+  # 
+  # def check_out(guest, room)
+  #   # what if the guest isn't there
+  #   room.remove_guest(guest)
+  # end
 
-  def create_room(name)
-    @rooms.push(Room.new(name))
-  end
-
-  def create_guest(name)
-    @guests.push(Guest.new(name))
-  end
 
 end
