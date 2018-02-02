@@ -45,5 +45,4 @@ class TestRoom < MiniTest::Test
     assert_equal(0, @room.songs.count)
   end
 
-
 end

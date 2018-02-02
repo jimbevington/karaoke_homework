@@ -11,6 +11,7 @@ class TestKaraokeBar < MiniTest::Test
 
   def setup
     @karaoke_bar = KaraokeBar.new("Posers")
+
   end
 
   def test_bar_has_name
@@ -27,6 +28,11 @@ class TestKaraokeBar < MiniTest::Test
 
   def test_bar_has_guests
     assert_equal([], @karaoke_bar.guests)
+  end
+
+  def test_can_create_song
+    @karaoke_bar.create_song("Barbie Girl", "Aqua")
+    assert_equal(1, @karaoke_bar.songs.count)
   end
 
 end
