@@ -35,6 +35,7 @@ class KaraokeBar
     guest.spend_money(amount)
   end
 
+  ### COULD MAKE THIS BE MULTIPLE GUESTS, an ARRAY
   def check_in(guest, room)
     if guest_can_afford_room(guest, room) && room_has_space(room)
       room.add_guest(guest)
