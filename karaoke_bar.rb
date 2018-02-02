@@ -15,20 +15,18 @@ class KaraokeBar
 
   def check_guest_money(guest, room)
     unless guest.money >= room.price
-      return p "Excuuuuuuse me! This costs £#{room.price}, you have £#{guest.money}."
-    else
-      return true
+      return p "You can't afford it!"
     end
   end
 
   def check_in(guest, room)
-    if check_guest_money(guest, room)
-      if room.guests.count < room.capacity
-        room.add_guest(guest)
-      else
-        p "Room Full. GET OUT!!!"
-      end
+    check_guest_money(guest, room)
+    if room.guests.count < room.capacity
+      room.add_guest(guest)
+    else
+      p "Room Full. GET OUT!!!"
     end
+
   end
   #
   def check_out(guest, room)
