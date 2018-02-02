@@ -1,0 +1,32 @@
+require('minitest/autorun')
+require('minitest/rg')
+
+require_relative('../karaoke_bar.rb')
+require_relative('../song.rb')
+require_relative('../guest.rb')
+require_relative('../room.rb')
+
+
+class TestKaraokeBar < MiniTest::Test
+
+  def setup
+    @karaoke_bar = KaraokeBar.new("Posers")
+  end
+
+  def test_bar_has_name
+    assert_equal("Posers", @karaoke_bar.name)
+  end
+
+  def test_bar_has_songs
+    assert_equal([], @karaoke_bar.songs)
+  end
+
+  def test_bar_has_rooms
+    assert_equal([], @karaoke_bar.rooms)
+  end
+
+  def test_bar_has_guests
+    assert_equal([], @karaoke_bar.guests)
+  end
+
+end
