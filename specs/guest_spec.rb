@@ -8,7 +8,7 @@ class TestGuest < MiniTest::Test
 
   def setup
     @song = Song.new("Maggot Brain", "Funkadelic")
-    @guest = Guest.new("Father Christmas", 50, "Maggot Brain")
+    @guest = Guest.new("Father Christmas", 50, @song)
     @songs = [@song]
   end
 
@@ -26,7 +26,7 @@ class TestGuest < MiniTest::Test
   end
 
   def test_guest_has_fave_song
-    assert_equal("Maggot Brain", @guest.fave_song)
+    assert_equal(@song, @guest.fave_song)
   end
 
   def test_check_songs

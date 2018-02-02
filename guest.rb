@@ -14,10 +14,11 @@ class Guest
 
   def check_songs(songs)
     for song in songs
-      if song.name == @fave_song
+      if song == @fave_song
         return "Whoo! They have my song!"
       end
     end
+
   end
 
 end
