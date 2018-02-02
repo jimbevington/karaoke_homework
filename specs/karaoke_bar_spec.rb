@@ -37,6 +37,7 @@ class TestKaraokeBar < MiniTest::Test
     assert_equal([], @karaoke_bar.guests)
   end
 
+  # could make this, check in guests
   def test_check_in_guest
     @karaoke_bar.check_in(@guest1, @room1)
     assert_equal(1, @room1.guests.count)
