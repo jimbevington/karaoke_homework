@@ -14,7 +14,11 @@ class KaraokeBar
   end
 
   def check_in(guest, room)
-    room.add_guest(guest)
+    if room.guests.count < room.capacity
+      room.add_guest(guest)
+    else
+      p "Room Full. GET OUT!!!"
+    end
   end
   #
   def check_out(guest, room)
