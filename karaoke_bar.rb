@@ -1,3 +1,4 @@
+
 class KaraokeBar
 
   attr_reader :name, :guests, :songs, :rooms
@@ -17,6 +18,10 @@ class KaraokeBar
 
   def create_room(name)
     @rooms.push(Room.new(name))
+  end
+
+  def create_guest(name)
+    @guests.push(Guest.new(name))
   end
 
 end
