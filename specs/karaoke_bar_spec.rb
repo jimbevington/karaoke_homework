@@ -37,7 +37,6 @@ class TestKaraokeBar < MiniTest::Test
     assert_equal([], @karaoke_bar.guests)
   end
 
-  # could make this, check in guests
   def test_check_in_guest
     guest = Guest.new("The Pope", 10)
     room = Room.new("Purgatory", 5, 10)
@@ -73,9 +72,24 @@ class TestKaraokeBar < MiniTest::Test
     guest3 = Guest.new("Cleetus", 10)
     @karaoke_bar.check_in(guest1, room)
     @karaoke_bar.check_in(guest2, room)
-    result = @karaoke_bar.check_in(guest3, room)
-    assert_equal("Room Full. GET OUT!!!", result)
+    @karaoke_bar.check_in(guest3, room)
+    result = room.guests.count
     assert_equal(2, room.guests.count)
+  end
+
+  # # COULD COMBINE THESE 4 TESTS INTO 2
+  def test_guest_can_afford_room__false
+    room = Room.new("CodeKlang!", 1, 45)
+    guest = Guest.new("King Harald", 30)
+    result = @karaoke_bar.guest_can_afford_room(guest, room)
+    assert_equal(false, result)
+  end
+
+  def test_guest_can_afford_room__true
+    room = Room.new("The Barras", 1, 25)
+    guest = Guest.new("King Harald", 30)
+    result = @karaoke_bar.guest_can_afford_room(guest, room)
+    assert_equal(true, result)
   end
 
   def test_check_guest_money__can_afford
@@ -84,18 +98,25 @@ class TestKaraokeBar < MiniTest::Test
     @karaoke_bar.check_in(guest, room)
     assert_equal(1, room.guests.count)
   end
-  #
+
   def test_check_guest_money__cant_afford
     guest = Guest.new("Vladimir", 50)
     room = Room.new("Mar a Lago", 4, 100)
-    result = @karaoke_bar.check_guest_money(guest, room)
-    assert_equal("You can't afford it!", result)
+    result = @karaoke_bar.check_in(guest, room)
     assert_equal(0, room.guests.count)
   end
 
-  # def test_guest_cant_afford_room
-  #   result = @karaoke_bar.check_in(@guest1, @room2)
-  #   assert_equal("Excuuuuuuse me! This costs £30, you have £10.", result)
-  # end
+  def test_deduct_money__basic
+    guest = Guest.new("Bono", 100)
+    @karaoke_bar.deduct_money(guest, 50)
+    assert_equal(50, guest.money)
+  end
+
+  def test_deduct_customer_money
+    guest = Guest.new("Donald", 100)
+    room = Room.new("Jail", 4, 50)
+    @karaoke_bar.check_in(guest, room)
+    assert_equal(50, guest.money)
+  end
 
 end
