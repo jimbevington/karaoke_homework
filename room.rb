@@ -36,8 +36,10 @@ class Room
     @songs.delete(song)
   end
 
-  def bar_sell_drink()
-
+  def bar_sell_drink(drink, guest)
+    # pass bar a guest from guest array, get bar to sell drink
+    @bar.sell_drink(drink, guest) 
+    @total_spend += drink[:price]
   end
 
 end
