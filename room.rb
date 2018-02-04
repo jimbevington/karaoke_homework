@@ -1,11 +1,12 @@
 class Room
 
-  attr_reader :name, :capacity, :price, :guests, :songs, :total_spend
+  attr_reader :name, :capacity, :price, :bar, :guests, :songs, :total_spend
 
-  def initialize(name, capacity, price)
+  def initialize(name, capacity, price, bar)
     @name = name
     @capacity = capacity
     @price = price
+    @bar = bar
     # both GUESTS and SONGS are added by the Karaoke bar
     @guests = []
     @songs = []
@@ -35,6 +36,8 @@ class Room
     @songs.delete(song)
   end
 
-  # def bar_sell_drink()
+  def bar_sell_drink()
+
+  end
 
 end

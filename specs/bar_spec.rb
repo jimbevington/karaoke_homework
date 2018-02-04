@@ -26,8 +26,7 @@ class TestBar < MiniTest::Test
         quantity: 30
       }
     ]
-    @tabs = []
-    @bar = Bar.new("Red", @drinks, @tabs)
+    @bar = Bar.new("Red", @drinks)
   end
 
   def test_bar_has_name

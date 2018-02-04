@@ -2,10 +2,10 @@ class Bar
 
   attr_reader :name, :drinks, :tabs
 
-  def initialize(name, drinks, tabs)
+  def initialize(name, drinks)
     @name = name
     @drinks = drinks
-    @tabs = tabs
+    @tabs = []
     # tabs currently an [] of {}, with guest name and tab
     # might be better with guest object rather than name
   end
