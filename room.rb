@@ -35,6 +35,6 @@ class Room
     @songs.delete(song)
   end
 
-
+  # def bar_sell_drink()
 
 end
